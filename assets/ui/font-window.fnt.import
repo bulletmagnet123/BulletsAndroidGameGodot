@@ -1,0 +1,16 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://dfy0coohld4hq"
+valid=false
+
+[deps]
+
+source_file="res://assets/ui/font-window.fnt"
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
