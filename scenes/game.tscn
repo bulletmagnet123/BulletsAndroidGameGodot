@@ -1,8 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://bx7yqgpar11g0"]
+[gd_scene load_steps=15 format=3 uid="uid://bx7yqgpar11g0"]
 
 [ext_resource type="PackedScene" uid="uid://c7rx6xb42rpjs" path="res://scenes/Player.tscn" id="1_otvxo"]
 [ext_resource type="Script" path="res://scenes/Player.cs" id="2_iniho"]
 [ext_resource type="Texture2D" uid="uid://b23iejnfv4dvs" path="res://assets/tiles.png" id="3_5s051"]
+[ext_resource type="Texture2D" uid="uid://b1k55nmsgqrmt" path="res://assets/left.png" id="3_lehox"]
+[ext_resource type="Texture2D" uid="uid://xw6kvsgtqbpp" path="res://assets/right.png" id="4_vcnmd"]
+[ext_resource type="Texture2D" uid="uid://bini17nx0evr8" path="res://assets/jump.png" id="5_7j2wm"]
+[ext_resource type="Texture2D" uid="uid://rhs5v4iaxi75" path="res://assets/attack.png" id="6_47c67"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4svfm"]
+radius = 32.0
+
+[sub_resource type="CSharpScript" id="CSharpScript_c6ejo"]
+script/source = "using Godot;
+using System;
+
+public partial class Left : TouchScreenButton
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+
+	}
+}
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p5wp0"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hvs8"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jjbgl"]
+radius = 32.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_np6si"]
 texture = ExtResource("3_5s051")
@@ -32,7 +67,41 @@ script = ExtResource("2_iniho")
 position = Vector2(-6, 0)
 zoom = Vector2(5, 5)
 
+[node name="Left" type="TouchScreenButton" parent="Player/Camera"]
+position = Vector2(-115, 43)
+scale = Vector2(0.25, 0.2625)
+texture_normal = ExtResource("3_lehox")
+shape = SubResource("CircleShape2D_4svfm")
+action = "left"
+script = SubResource("CSharpScript_c6ejo")
+
+[node name="Right" type="TouchScreenButton" parent="Player/Camera"]
+position = Vector2(-70, 44)
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("4_vcnmd")
+shape = SubResource("CircleShape2D_p5wp0")
+action = "right"
+
+[node name="Jump" type="TouchScreenButton" parent="Player/Camera"]
+position = Vector2(-93, 44)
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("5_7j2wm")
+shape = SubResource("CircleShape2D_4hvs8")
+action = "jump"
+
+[node name="Attack" type="TouchScreenButton" parent="Player/Camera"]
+position = Vector2(93, -4)
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("6_47c67")
+shape = SubResource("CircleShape2D_jjbgl")
+action = "attack"
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_4jps4")
 format = 2
 layer_0/tile_data = PackedInt32Array(1114147, 0, 0, 1114148, 0, 0, 1114149, 0, 0, 1114150, 0, 0, 1114151, 0, 0, 1114146, 0, 0, 1114145, 0, 0, 1114144, 0, 0, 1114143, 0, 0, 1114142, 0, 0, 1114141, 0, 0, 1179685, 65536, 0, 1179686, 65536, 0, 1179687, 65536, 0, 1179688, 65536, 0, 1114152, 0, 0, 1114153, 0, 0, 1114154, 0, 0, 1048618, 131072, 0, 983082, 131072, 0, 917546, 131072, 0, 852010, 131072, 0, 786474, 131072, 0, 786473, 131072, 0, 852009, 131072, 0, 917545, 131072, 0, 983081, 131072, 0, 1048617, 131072, 0, 1048616, 131072, 0, 983080, 131072, 0, 917544, 131072, 0, 852008, 131072, 0, 786472, 131072, 0, 786471, 131072, 0, 852007, 131072, 0, 917543, 131072, 0, 983079, 131072, 0, 1048615, 131072, 0, 1048614, 131072, 0, 983078, 131072, 0, 917542, 131072, 0, 852006, 131072, 0, 786470, 131072, 0, 786469, 131072, 0, 852005, 131072, 0, 917541, 131072, 0, 983077, 131072, 0, 1048613, 131072, 0, 1048612, 131072, 0, 983076, 131072, 0, 917540, 131072, 0, 852004, 131072, 0, 786468, 131072, 0, 786467, 131072, 0, 852003, 131072, 0, 917539, 131072, 0, 983075, 131072, 0, 1048611, 131072, 0, 1048610, 131072, 0, 1048609, 131072, 0, 1048608, 131072, 0, 1048607, 131072, 0, 1048606, 131072, 0, 1048605, 131072, 0, 1048604, 131072, 0, 983068, 131072, 0, 983069, 131072, 0, 983070, 131072, 0, 983071, 131072, 0, 983072, 131072, 0, 983073, 131072, 0, 983074, 131072, 0, 917538, 131072, 0, 917537, 131072, 0, 917536, 131072, 0, 917535, 131072, 0, 917534, 131072, 0, 917533, 131072, 0, 917532, 131072, 0, 851996, 131072, 0, 851997, 131072, 0, 851998, 131072, 0, 851999, 131072, 0, 852000, 131072, 0, 852001, 131072, 0, 852002, 131072, 0, 786466, 131072, 0, 786465, 131072, 0, 786464, 131072, 0, 786463, 131072, 0, 786462, 131072, 0, 786461, 131072, 0, 786460, 131072, 0, 1179684, 196608, 0, 1179683, 196608, 0, 1179682, 196608, 0, 1179681, 196608, 0, 1245217, 196608, 0, 1245218, 196608, 0, 1245219, 327680, 0, 1245220, 196608, 0, 1245221, 327680, 0, 1310757, 327680, 0, 1310756, 327680, 0, 1310755, 327680, 0, 1245216, 327680, 0, 1310752, 327680, 0, 1310753, 327680, 0, 1310754, 327680, 0, 1245215, 65536, 0, 1179680, 327680, 0, 1179679, 65536, 0, 1179678, 65536, 0, 1179677, 65536, 0, 1245213, 65536, 0, 1179689, 65536, 0, 1179690, 65536, 0, 1245226, 65536, 0, 1245225, 65536, 0, 1245224, 65536, 0, 1245223, 65536, 0, 1310759, 65536, 0, 1310758, 65536, 0, 1245222, 65536, 0, 1310760, 65536, 0, 1310761, 65536, 0, 1310762, 65536, 0, 1310751, 65536, 0, 1310750, 65536, 0, 1310749, 65536, 0, 1310748, 65536, 0, 1245212, 65536, 0, 1179676, 65536, 0, 1245214, 65536, 0, 1114140, 0, 0)
+
+[connection signal="pressed" from="Player/Camera/Left" to="Player/Camera/Left" method="_on_left_pressed"]
+[connection signal="pressed" from="Player/Camera/Right" to="Player" method="_on_right_pressed"]
+[connection signal="pressed" from="Player/Camera/Jump" to="Player" method="_on_jump_pressed"]
+[connection signal="pressed" from="Player/Camera/Attack" to="Player" method="_on_attack_pressed"]
